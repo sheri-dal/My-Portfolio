@@ -14,6 +14,8 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+let mailTransporter: nodemailer.Transporter | undefined;
+
 app.use(express.json());
 
 app.post('/api/contact', async (req, res) => {
@@ -37,18 +39,26 @@ app.post('/api/contact', async (req, res) => {
     });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: smtpHost,
-    port: smtpPort,
-    secure: smtpPort === 465,
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-  });
+  if (!mailTransporter) {
+    mailTransporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465,
+      pool: true,
+      maxConnections: 1,
+      maxMessages: 20,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
+    });
+  }
 
   try {
-    await transporter.sendMail({
+    await mailTransporter.sendMail({
       from: `Portfolio Contact <${contactFrom}>`,
       to: contactTo,
       replyTo: email,

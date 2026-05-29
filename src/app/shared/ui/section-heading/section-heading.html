@@ -1,0 +1,13 @@
+<div class="space-y-3">
+  @if (eyebrow()) {
+    <p class="text-xs font-semibold uppercase tracking-[0.32em] text-purple-700 dark:text-purple-400">{{ eyebrow() }}</p>
+  }
+
+  @if (title()) {
+    <h2 [id]="headingId() || null" class="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">{{ title() }}</h2>
+  }
+
+  @if (description()) {
+    <p class="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-400 sm:text-base">{{ description() }}</p>
+  }
+</div>

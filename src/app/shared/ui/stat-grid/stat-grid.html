@@ -1,0 +1,11 @@
+<div class="grid w-full grid-cols-2 gap-4 sm:grid-cols-4" role="list" aria-label="Key metrics">
+  @for (item of items(); track item.label) {
+    <div
+      role="listitem"
+      class="flex flex-col items-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-4 py-5 text-center shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition-colors duration-200 dark:border-white/10 dark:bg-slate-900/40 dark:shadow-[0_12px_30px_rgba(2,6,23,0.28)]"
+    >
+      <div class="text-2xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-[1.75rem]">{{ item.value }}</div>
+      <div class="text-xs font-medium leading-tight text-slate-600 dark:text-slate-400 sm:text-sm">{{ item.label }}</div>
+    </div>
+  }
+</div>

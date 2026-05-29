@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="inline-flex h-9 w-9 items-center justify-center cursor-pointer rounded-lg border-0 bg-transparent text-xl text-slate-700 transition-all duration-200 hover:-translate-y-0.5 hover:text-purple-500 hover:shadow-[0_0_0_1px_rgba(168,85,247,0.12),0_0_18px_rgba(168,85,247,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 dark:text-slate-400 dark:hover:text-purple-300 dark:hover:shadow-[0_0_0_1px_rgba(196,181,253,0.14),0_0_18px_rgba(168,85,247,0.18)]"
+  [attr.aria-label]="label()"
+  [attr.title]="label()"
+  [attr.aria-pressed]="theme() === 'dark'"
+  (click)="toggle()"
+>
+  <span nz-icon [nzType]="icon()" nzTheme="outline" class="text-current" aria-hidden="true"></span>
+</button>

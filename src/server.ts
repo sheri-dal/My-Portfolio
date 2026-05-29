@@ -4,13 +4,82 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import 'dotenv/config';
 import express from 'express';
 import { join } from 'node:path';
+import nodemailer from 'nodemailer';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+
+app.use(express.json());
+
+app.post('/api/contact', async (req, res) => {
+  const { fullName, email, phone, subject, message } = req.body ?? {};
+
+  if (!fullName || !email || !subject || !message) {
+    return res.status(400).json({ message: 'Missing required contact fields.' });
+  }
+
+  const smtpHost = process.env['SMTP_HOST'];
+  const smtpPort = Number(process.env['SMTP_PORT'] || 587);
+  const smtpUser = process.env['SMTP_USER'];
+  const smtpPass = process.env['SMTP_PASS'];
+  const contactTo = process.env['CONTACT_TO_EMAIL'] || smtpUser;
+  const contactFrom = process.env['CONTACT_FROM_EMAIL'] || smtpUser;
+
+  if (!smtpHost || !smtpUser || !smtpPass) {
+    return res.status(500).json({
+      message:
+        'Mail service is not configured. Add SMTP_HOST, SMTP_USER, and SMTP_PASS to your .env file. CONTACT_TO_EMAIL and CONTACT_FROM_EMAIL default to SMTP_USER when omitted.',
+    });
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpPort === 465,
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: `Portfolio Contact <${contactFrom}>`,
+      to: contactTo,
+      replyTo: email,
+      subject: `[Portfolio] ${subject}`,
+      text: [
+        `Name: ${fullName}`,
+        `Email: ${email}`,
+        phone ? `Phone: ${phone}` : null,
+        '',
+        message,
+      ]
+        .filter(Boolean)
+        .join('\n'),
+      html: `
+        <div style="font-family:Arial,sans-serif;line-height:1.6;color:#0f172a">
+          <h2 style="margin:0 0 12px">Portfolio contact form submission</h2>
+          <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p style="white-space:pre-wrap"><strong>Message:</strong><br/>${message}</p>
+        </div>
+      `,
+    });
+
+    return res.status(200).json({ message: 'Message sent successfully.' });
+  } catch (error) {
+    console.error('Contact email send failed:', error);
+    return res.status(500).json({ message: 'Failed to send message.' });
+  }
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.

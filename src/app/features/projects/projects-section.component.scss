@@ -1,0 +1,218 @@
+:host {
+  display: block;
+}
+
+:host ::ng-deep nz-card {
+  background: transparent;
+}
+
+.featured-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Make project images fully visible (no cropping) and centered */
+.project-row img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image wrapper: enforce a consistent aspect ratio and fill with cover to avoid letterboxing */
+.project-image {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(243,244,246,0.6); /* light gray backdrop for images */
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.project-row {
+  border-radius: 12px;
+  padding: 12px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+/* Add vertical gap between project cards for clearer separation */
+.project-row { margin-bottom: 1.25rem; }
+.project-row:last-child { margin-bottom: 0; }
+
+.project-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(2,6,23,0.12);
+  border-color: rgba(124,58,237,0.22);
+}
+
+@media (min-width: 1024px) {
+  .featured { gap: 28px; }
+}
+
+/* Accent color and dark-mode text rules to match site */
+:host {
+  --accent: #7c3aed; /* Tailwind purple-600 */
+}
+
+.heading-accent {
+  color: var(--accent) !important;
+}
+
+.project-action {
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  letter-spacing: 0.01em;
+}
+
+.project-action:hover {
+  transform: translateY(-1px);
+}
+
+.accent-btn.project-action {
+  box-shadow: 0 10px 24px rgba(124,58,237,0.20);
+}
+
+.accent-btn.project-action:hover {
+  box-shadow: 0 14px 28px rgba(124,58,237,0.28);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #ffffff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.75rem;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.30);
+}
+
+.project-link:hover {
+  color: #f5f3ff;
+  background: rgba(124,58,237,0.18);
+  border-color: rgba(168,85,247,0.52);
+}
+
+.tech-chip {
+  cursor: pointer;
+  color: #ffffff !important;
+  background: rgba(15,23,42,0.92) !important;
+  border: 1px solid rgba(148,163,184,0.22) !important;
+  border-radius: 9999px !important;
+  padding: 0.38rem 0.75rem !important;
+  line-height: 1.1 !important;
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+}
+
+.tech-chip:hover {
+  transform: translateY(-1px);
+  color: #ffffff !important;
+  background: rgba(124,58,237,0.18) !important;
+  border-color: rgba(168,85,247,0.55) !important;
+  box-shadow: 0 10px 22px rgba(124,58,237,0.16);
+}
+
+/* Give each chip a slightly different border hue for a more premium feel */
+.tech-chip:nth-child(6n + 1) { border-color: rgba(34,197,94,0.28) !important; }
+.tech-chip:nth-child(6n + 2) { border-color: rgba(59,130,246,0.28) !important; }
+.tech-chip:nth-child(6n + 3) { border-color: rgba(236,72,153,0.28) !important; }
+.tech-chip:nth-child(6n + 4) { border-color: rgba(245,158,11,0.28) !important; }
+.tech-chip:nth-child(6n + 5) { border-color: rgba(168,85,247,0.28) !important; }
+.tech-chip:nth-child(6n + 6) { border-color: rgba(14,165,233,0.28) !important; }
+
+.tech-chip:nth-child(6n + 1):hover { border-color: rgba(34,197,94,0.55) !important; }
+.tech-chip:nth-child(6n + 2):hover { border-color: rgba(59,130,246,0.55) !important; }
+.tech-chip:nth-child(6n + 3):hover { border-color: rgba(236,72,153,0.55) !important; }
+.tech-chip:nth-child(6n + 4):hover { border-color: rgba(245,158,11,0.55) !important; }
+.tech-chip:nth-child(6n + 5):hover { border-color: rgba(168,85,247,0.65) !important; }
+.tech-chip:nth-child(6n + 6):hover { border-color: rgba(14,165,233,0.55) !important; }
+
+/* Make featured layout stack nicely on small screens and switch to grid on large */
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .featured {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.featured-media {
+  height: 220px;
+}
+
+@media (min-width: 640px) {
+  .featured-media { height: 260px; }
+}
+
+@media (min-width: 1024px) {
+  .featured-media { height: 420px; }
+}
+
+/* Ensure project rows wrap and text doesn't overflow on small screens */
+.project-row {
+  width: 100%;
+}
+
+.project-row .flex-1 { min-width: 0; }
+
+.project-row p, .project-row .text-sm { color: var(--slate-600, #4b5563); }
+.dark .project-row p, .dark .project-row .text-sm { color: #ffffff; }
+
+.accent-link {
+  color: var(--accent);
+}
+
+.accent-btn {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.accent-btn:hover { filter: brightness(1.06); }
+
+.accent-outline {
+  color: var(--accent);
+  border: 1px solid rgba(124,58,237,0.12);
+  background: transparent;
+}
+.accent-outline:hover { background: rgba(124,58,237,0.04); }
+
+/* Ensure dark mode primary text is white */
+:host .dark, :host.dark {
+  color: #ffffff;
+}
+
+
+@media (max-width: 640px) {
+  .project-row { padding: 8px; }
+  .featured-media { height: 12rem; }
+}
+
+.project-row .ant-card-body {
+  padding: 12px !important;
+}
+
+.project-row .tech-chip {
+  margin-top: 0.05rem;
+}
+
+.project-row h4,
+.project-row h3,
+.project-row p,
+.project-row li,
+.project-row div,
+.project-row span {
+  text-rendering: geometricPrecision;
+}
+

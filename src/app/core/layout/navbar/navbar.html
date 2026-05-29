@@ -1,0 +1,65 @@
+<header
+  class="sticky top-0 z-50 w-full overflow-hidden border-b border-slate-200/70 bg-white/80 text-slate-800 backdrop-blur-md shadow-[0_1px_0_rgba(15,23,42,0.04),0_12px_28px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-100 dark:shadow-[0_1px_0_rgba(255,255,255,0.03),0_14px_36px_rgba(2,6,23,0.58)]"
+  role="banner"
+>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.12),transparent_42%)] dark:bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.18),transparent_44%)]"></div>
+
+  <div class="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-3 sm:h-16 sm:gap-4 sm:px-6 lg:h-[72px] lg:px-8">
+    <a
+      class="flex shrink-0 items-center gap-2 font-[Poppins,ui-sans-serif,sans-serif] text-sm font-semibold tracking-[0.18em] text-slate-900 transition-transform duration-200 hover:-translate-y-0.5 dark:text-slate-50"
+      [routerLink]="['/']"
+      fragment="home"
+      aria-label="Go to home section"
+    >
+      <img
+        ngSrc="assets/icons/logo.png"
+        width="160"
+        height="64"
+        alt="Portfolio logo"
+        priority
+        class="h-12 w-auto max-h-12 object-contain drop-shadow-[0_0_12px_rgba(124,58,237,0.22)] transition duration-200 hover:drop-shadow-[0_0_16px_rgba(124,58,237,0.32)] sm:h-14 sm:max-h-14 lg:h-16 lg:max-h-16"
+      />
+    </a>
+
+    <nav class="hidden flex-1 items-center justify-center gap-1 min-[831px]:flex" aria-label="Primary Navigation">
+      @for (link of links; track link.fragment) {
+        <a
+          class="group relative px-3 py-2 text-[13px] font-medium tracking-wide text-slate-600 transition-colors duration-200 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+          [routerLink]="['/']"
+          [fragment]="link.fragment"
+          routerLinkActive="text-purple-600 dark:text-purple-400"
+          [routerLinkActiveOptions]="activeOptions"
+          [attr.aria-current]="currentFragment() === link.fragment ? 'page' : null"
+          (click)="onNavigate(link.fragment, $event)"
+        >
+          <span>{{ link.label }}</span>
+          <span
+            class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 rounded-full bg-purple-600 transition-transform duration-300 ease-in-out group-hover:scale-x-100 dark:bg-purple-400"
+            [class.scale-x-100]="currentFragment() === link.fragment"
+            aria-hidden="true"
+          ></span>
+        </a>
+      }
+    </nav>
+
+    <div class="hidden items-center gap-2 min-[831px]:flex" aria-label="Theme and CV Actions">
+      <app-theme-toggle></app-theme-toggle>
+      <app-download-cv-button></app-download-cv-button>
+    </div>
+
+    <div class="ml-auto flex items-center gap-1 min-[831px]:hidden">
+      <app-theme-toggle></app-theme-toggle>
+
+      <button
+        type="button"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-700 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-100 hover:text-purple-600 hover:shadow-[0_0_0_1px_rgba(168,85,247,0.12),0_0_18px_rgba(168,85,247,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-purple-300 dark:hover:shadow-[0_0_0_1px_rgba(196,181,253,0.14),0_0_18px_rgba(168,85,247,0.16)] sm:h-10 sm:w-10"
+        aria-label="Open navigation menu"
+        [attr.aria-expanded]="mobileOpen()"
+        (click)="openMobileMenu()"
+      >
+        <span nz-icon nzType="menu" nzTheme="outline" aria-hidden="true" class="text-[1rem] sm:text-[1.1rem]"></span>
+      </button>
+    </div>
+  </div>
+</header>

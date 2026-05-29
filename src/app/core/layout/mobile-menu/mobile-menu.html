@@ -1,0 +1,65 @@
+@if (visible()) {
+  <div class="flex h-full min-h-0 w-full flex-col bg-[radial-gradient(circle_at_top,rgba(124,92,255,0.16),transparent_35%),linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.96))] px-4 pb-6 pt-4 text-slate-800 dark:bg-[radial-gradient(circle_at_top,rgba(124,92,255,0.18),transparent_35%),linear-gradient(180deg,rgba(2,6,23,0.98),rgba(2,6,23,0.96))] dark:text-slate-100">
+    <header class="flex items-center justify-between gap-4 pb-5">
+      <a
+        class="flex items-center font-[Poppins,ui-sans-serif,sans-serif] text-sm font-semibold tracking-[0.18em] text-slate-900 dark:text-slate-100"
+        [routerLink]="['/']"
+        fragment="home"
+        (click)="onNavigate('home', $event)"
+        aria-label="Go to home section"
+      >
+        <img
+          ngSrc="assets/icons/logo.png"
+          width="136"
+          height="52"
+          alt="Portfolio logo"
+          class="h-11 w-auto object-contain sm:h-12"
+        />
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-purple-600 hover:shadow-[0_0_0_1px_rgba(168,85,247,0.12),0_0_18px_rgba(168,85,247,0.16)] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/60 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-purple-300 dark:hover:shadow-[0_0_0_1px_rgba(196,181,253,0.14),0_0_18px_rgba(168,85,247,0.16)]"
+        aria-label="Close navigation menu"
+        (click)="onClose()"
+      >
+        <span nz-icon nzType="close" nzTheme="outline" aria-hidden="true" class="text-[1rem]"></span>
+      </button>
+    </header>
+
+    <nav class="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto pr-1" aria-label="Mobile Navigation">
+      @for (link of links; track link.fragment) {
+        <a
+          class="rounded-2xl border border-transparent px-4 py-4 text-sm font-medium text-slate-700 transition-all duration-200 hover:border-purple-500/20 hover:bg-white/70 hover:text-purple-600 hover:shadow-[0_0_0_1px_rgba(168,85,247,0.10),0_0_18px_rgba(168,85,247,0.12)] dark:text-slate-400 dark:hover:border-purple-400/20 dark:hover:bg-white/5 dark:hover:text-purple-300"
+          [routerLink]="['/']"
+          [fragment]="link.fragment"
+          routerLinkActive="border-purple-500/25 bg-purple-600/10 text-purple-600 shadow-[0_0_0_1px_rgba(168,85,247,0.18),0_0_18px_rgba(168,85,247,0.12)] dark:border-purple-400/25 dark:bg-purple-400/10 dark:text-purple-300"
+          [routerLinkActiveOptions]="activeOptions"
+          [attr.aria-current]="currentFragment() === link.fragment ? 'page' : null"
+          (click)="onNavigate(link.fragment, $event)"
+        >
+          <span class="relative inline-flex items-center text-[15px]">
+            {{ link.label }}
+            <span
+              class="absolute -bottom-2 left-0 h-[3px] w-full origin-left scale-x-0 rounded-full bg-purple-600 transition-transform duration-300 ease-in-out dark:bg-purple-400"
+              [class.scale-x-100]="currentFragment() === link.fragment"
+              aria-hidden="true"
+            ></span>
+          </span>
+        </a>
+      }
+    </nav>
+
+    <section class="mt-4 grid gap-4 rounded-2xl border border-slate-200/80 bg-white/65 p-4 backdrop-blur-md dark:border-white/10 dark:bg-white/5" aria-label="Mobile drawer actions">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <span class="block text-xs font-medium uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Theme</span>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Switch appearance</p>
+        </div>
+        <app-theme-toggle></app-theme-toggle>
+      </div>
+
+      <app-download-cv-button [fullWidth]="true" (click)="onClose()"></app-download-cv-button>
+    </section>
+  </div>
+}

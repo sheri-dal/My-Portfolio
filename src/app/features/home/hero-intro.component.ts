@@ -79,8 +79,8 @@ export class HeroIntroComponent implements OnInit {
       { label: 'LinkedIn', url: CONTACT.linkedIn, nzIcon: 'linkedin' },
       { label: 'Email', url: `mailto:${CONTACT.email}`, nzIcon: 'mail' },
     ],
-    darkBackgroundImagePath: '/assets/icons/Hero-sec-img.png',
-    lightBackgroundImagePath: '/assets/icons/Hero-sec-img-light.png',
+    darkBackgroundImagePath: 'assets/icons/Hero-sec-img.png',
+    lightBackgroundImagePath: 'assets/icons/Hero-sec-img-light.png',
     seoTitle: 'Sheheryar Hussain | Full-Stack Software Engineer',
     seoDescription:
       'Full-Stack Software Engineer (.NET Core, C#, Flutter, SQL Server) — building enterprise web and mobile systems.',

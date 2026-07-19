@@ -32,14 +32,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build static Angular site
-        run: npx ng build --configuration production --output-mode static --base-href /My-Portfolio/
+        run: npx ng build --configuration production --output-mode static --base-href "${{ steps.pages.outputs.base_path }}/"
 
       - name: Add SPA fallback
-        run: cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        run: |
+          cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+          touch dist/portfolio/browser/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

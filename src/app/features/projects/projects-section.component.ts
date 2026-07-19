@@ -55,7 +55,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['.NET Core', 'SQL Server', 'Docker', 'Azure', 'JWT Authentication', 'REST APIs'],
       demoUrl: '#',
-      image: '/assets/projects/logistic-hub.png',
+      image: 'assets/projects/logistic-hub.png',
     },
     {
       id: '7ag-food-distribution',
@@ -73,7 +73,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['Flutter', '.NET Core', 'SQL Server', 'Entity Framework Core', 'GetX', 'REST APIs', 'Firebase Cloud Messaging', 'JWT Authentication'],
       demoUrl: '#',
-      image: '/assets/projects/7AG.png',
+      image: 'assets/projects/7AG.png',
     },
     {
       id: 'sa-pos',
@@ -91,7 +91,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['Flutter', 'SQLite', 'REST APIs', 'ERP Integration', 'Offline Synchronization'],
       demoUrl: '#',
-      image: '/assets/projects/POS.png',
+      image: 'assets/projects/POS.png',
     },
     {
       id: 'order-booker',
@@ -108,7 +108,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['Flutter', 'SQLite', 'REST APIs', 'Offline Storage', 'Data Synchronization'],
       demoUrl: '#',
-      image: '/assets/projects/ordre-booker-app.png',
+      image: 'assets/projects/ordre-booker-app.png',
     },
     {
       id: 'splendid-accounts',
@@ -125,7 +125,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['.NET Core', 'C#', 'SQL Server', 'Entity Framework Core', 'REST APIs', 'ERP Integration'],
       demoUrl: '#',
-      image: '/assets/projects/splendid.png',
+      image: 'assets/projects/splendid.png',
     },
     {
       id: 'paymytuition',
@@ -142,7 +142,7 @@ export class ProjectsSectionComponent implements OnInit {
       ],
       technologies: ['Frontend Development', 'API Integration', 'Payment Systems', 'Testing & Quality Assurance'],
       demoUrl: '#',
-      image: '/assets/projects/pay-my-tuition.png',
+      image: 'assets/projects/pay-my-tuition.png',
     },
   ];
 

@@ -9,7 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DownloadCvButtonComponent {
-  readonly href = input('/assets/CV/Sheheryar_Hussain_CV.pdf');
+  readonly href = input('assets/CV/Sheheryar_Hussain_CV.pdf');
   readonly fileName = input('Sheheryar_Hussain_CV.pdf');
   readonly label = input('Download CV');
   readonly fullWidth = input(false);

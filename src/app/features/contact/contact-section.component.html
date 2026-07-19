@@ -129,9 +129,9 @@
               </nz-form-item>
 
               <div class="flex justify-end pt-2">
-                <button nz-button nzType="primary" [disabled]="contactForm.invalid" 
+                <button nz-button nzType="primary" [disabled]="contactForm.invalid || isSubmitting()"
                   class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 px-6 text-sm font-medium tracking-wide text-slate-900 shadow-lg shadow-purple-950/20 transition-all duration-300 hover:scale-[1.01] hover:from-purple-600 hover:to-indigo-500 dark:shadow-purple-950/50 disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 dark:disabled:from-slate-800 dark:disabled:to-slate-800 dark:disabled:text-slate-500 border-none">
-                  <span>Send Message</span>
+                  <span>{{ isSubmitting() ? 'Sending...' : 'Send Message' }}</span>
                   <!-- <span nz-icon nzType="rocket" nzTheme="outline" aria-hidden="true"></span> -->
                 </button>
               </div>

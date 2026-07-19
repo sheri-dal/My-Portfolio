@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT, CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
@@ -39,13 +39,14 @@ export class ContactSectionComponent implements OnInit {
   private readonly doc = inject(DOCUMENT);
   private readonly fb = inject(FormBuilder);
   private readonly message = inject(NzMessageService);
-  private readonly apiEndpoint = '/api/contact';
+  private readonly apiEndpoint = `https://formsubmit.co/ajax/${CONTACT.email}`;
   readonly locationTitle = 'Nuremberg, Germany';
   readonly email = CONTACT.email;
   readonly phone = CONTACT.phone;
   readonly linkedIn = CONTACT.linkedIn;
   readonly github = CONTACT.github;
   readonly twitter = '';
+  readonly isSubmitting = signal(false);
 
   contactDetails: ContactInfo[] = [];
   socialProfiles: SocialProfile[] = [];
@@ -108,7 +109,7 @@ export class ContactSectionComponent implements OnInit {
   }
 
   async submit() {
-    if (this.contactForm.invalid) {
+    if (this.contactForm.invalid || this.isSubmitting()) {
       this.contactForm.markAllAsTouched();
       this.message.error('Please fix validation errors before sending.');
       return;
@@ -122,18 +123,30 @@ export class ContactSectionComponent implements OnInit {
       message: this.getControl('message').value ?? '',
     };
 
+    this.isSubmitting.set(true);
     this.message.loading('Sending message...', { nzDuration: 0 });
 
     try {
       const response = await fetch(this.apiEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          ...payload,
+          _subject: `[Portfolio] ${payload.subject}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
       });
 
-      const result = (await response.json().catch(() => ({}))) as { message?: string };
+      const result = (await response.json().catch(() => ({}))) as {
+        message?: string;
+        success?: boolean | string;
+      };
 
-      if (!response.ok) {
+      if (!response.ok || result.success === false || result.success === 'false') {
         throw new Error(result.message || 'Failed to send message.');
       }
 
@@ -143,6 +156,8 @@ export class ContactSectionComponent implements OnInit {
     } catch (error) {
       this.message.remove();
       this.message.error(error instanceof Error ? error.message : 'Failed to send message.');
+    } finally {
+      this.isSubmitting.set(false);
     }
   }
 

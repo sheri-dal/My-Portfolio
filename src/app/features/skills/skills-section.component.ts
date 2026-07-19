@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 interface SkillCategory {
@@ -18,8 +17,6 @@ interface SkillCategory {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsSectionComponent {
-  private readonly meta = inject(Meta);
-
   readonly sectionHeading: string = 'Technical Expertise';
 
   readonly introParagraphs: string[] = [
@@ -92,11 +89,4 @@ export class SkillsSectionComponent {
     },
   ];
 
-  constructor() {
-    this.meta.updateTag({
-      name: 'description',
-      content:
-        'Technical expertise covering frontend engineering, backend services, cloud operations, data systems, and software architecture capabilities.',
-    });
-  }
 }

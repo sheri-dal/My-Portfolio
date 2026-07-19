@@ -34,6 +34,8 @@ interface HeroProfile {
   readonly secondaryCtaText: string;
   readonly secondaryCtaUrl: string;
   readonly socialLinks: readonly HeroSocialLink[];
+  readonly focusAreas: readonly string[];
+  readonly proofPoints: readonly { value: string; label: string }[];
   // readonly stats: readonly HeroStat[];
   readonly darkBackgroundImagePath: string;
   readonly lightBackgroundImagePath: string;
@@ -69,7 +71,7 @@ export class HeroIntroComponent implements OnInit {
     fullName: 'Sheheryar Hussain',
     jobTitle: 'Full-Stack Software Engineer',
     bioDescription:
-      'Results-driven Full-Stack Software Engineer with 4+ years building scalable enterprise-grade web, mobile, and backend systems using .NET Core, C#, Flutter, and SQL Server. Experienced in ERP-integrated platforms, logistics systems, offline-first applications, and high-performance APIs used in production. Strong background in software architecture, authentication, data synchronization, and cross-platform development. Currently based in Nürnberg, Germany — improving German (A1).',
+      'I design and deliver production-ready web, mobile, and backend systems for complex business workflows—from scalable .NET APIs to offline-first Flutter applications and ERP integrations.',
     primaryCtaText: 'View My Work',
     primaryCtaUrl: '#projects',
     secondaryCtaText: 'Get In Touch',
@@ -79,11 +81,17 @@ export class HeroIntroComponent implements OnInit {
       { label: 'LinkedIn', url: CONTACT.linkedIn, nzIcon: 'linkedin' },
       { label: 'Email', url: `mailto:${CONTACT.email}`, nzIcon: 'mail' },
     ],
+    focusAreas: ['.NET Core & C#', 'Angular', 'Flutter', 'System Architecture'],
+    proofPoints: [
+      { value: '4+', label: 'Years building products' },
+      { value: '10+', label: 'Projects delivered' },
+      { value: '3', label: 'Platforms: web, mobile & API' },
+    ],
     darkBackgroundImagePath: 'assets/icons/Hero-sec-img.png',
     lightBackgroundImagePath: 'assets/icons/Hero-sec-img-light.png',
-    seoTitle: 'Sheheryar Hussain | Full-Stack Software Engineer',
+    seoTitle: 'Sheheryar Hussain | Full-Stack .NET, Angular & Flutter Engineer',
     seoDescription:
-      'Full-Stack Software Engineer (.NET Core, C#, Flutter, SQL Server) — building enterprise web and mobile systems.',
+      'Full-Stack Software Engineer in Nuremberg specializing in .NET Core, Angular, Flutter, SQL Server, scalable APIs, offline-first apps, and enterprise integrations.',
   };
 
   readonly backgroundImage = computed(() =>
@@ -103,7 +111,7 @@ export class HeroIntroComponent implements OnInit {
 
     const absoluteImageUrl = isPlatformBrowser(this.platformId)
       ? new URL(activeBackgroundImagePath, this.document.baseURI).toString()
-      : activeBackgroundImagePath;
+      : `https://sheri-dal.github.io/My-Portfolio/${activeBackgroundImagePath}`;
 
     this.title.setTitle(this.profile.seoTitle);
     this.meta.updateTag({ name: 'description', content: this.profile.seoDescription });
@@ -112,7 +120,24 @@ export class HeroIntroComponent implements OnInit {
     this.meta.updateTag({ property: 'og:image', content: absoluteImageUrl });
     this.meta.updateTag({ property: 'og:image:alt', content: `${this.profile.fullName} hero background` });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://sheri-dal.github.io/My-Portfolio/' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Sheheryar Hussain Portfolio' });
     this.meta.updateTag({ property: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ property: 'twitter:title', content: this.profile.seoTitle });
+    this.meta.updateTag({ property: 'twitter:description', content: this.profile.seoDescription });
+    this.meta.updateTag({ property: 'twitter:image', content: absoluteImageUrl });
+    this.meta.updateTag({ name: 'robots', content: 'index, follow, max-image-preview:large' });
+
+    const canonicalUrl = isPlatformBrowser(this.platformId)
+      ? new URL('.', this.document.baseURI).toString()
+      : 'https://sheri-dal.github.io/My-Portfolio/';
+    let canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = this.document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
 
     // Inject or update JSON-LD structured data for improved SEO (Person)
     if (isPlatformBrowser(this.platformId)) {

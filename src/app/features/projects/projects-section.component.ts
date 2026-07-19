@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { Meta, Title } from '@angular/platform-browser';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTagModule } from 'ng-zorro-antd/tag';
@@ -19,6 +18,7 @@ interface Project {
   readonly impact?: string;
   readonly tech?: readonly string[];
   readonly demoUrl?: string;
+  readonly demoLabel?: string;
   readonly repoUrl?: string;
   readonly image?: string;
 }
@@ -32,8 +32,6 @@ interface Project {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsSectionComponent implements OnInit {
-  private readonly title = inject(Title);
-  private readonly meta = inject(Meta);
   private readonly doc = inject(DOCUMENT);
 
   readonly sectionHeading = 'Selected Client Engagements';
@@ -54,7 +52,8 @@ export class ProjectsSectionComponent implements OnInit {
         'Established deployment and infrastructure strategies.',
       ],
       technologies: ['.NET Core', 'SQL Server', 'Docker', 'Azure', 'JWT Authentication', 'REST APIs'],
-      demoUrl: '#',
+      demoUrl: 'https://app.amjim.com/',
+      demoLabel: 'View Live Platform',
       image: 'assets/projects/logistic-hub.png',
     },
     {
@@ -63,7 +62,8 @@ export class ProjectsSectionComponent implements OnInit {
       timeframe: '2025 – Present',
       role: 'Full-Stack Developer',
       longDescription:
-        'Food distribution and sales-management platform for distributors, sales agents, and retail partners. Built order management, inventory tracking, delivery workflows, and automation to increase operational efficiency across the distribution lifecycle.',
+        'Production food-distribution ordering app with product browsing, offers, account ledgers, order history, multilingual support, and real-time order updates.',
+      impact: 'Published production app on Google Play',
       contributions: [
         'Developed mobile and backend application features.',
         'Implemented order processing and inventory management workflows.',
@@ -72,7 +72,8 @@ export class ProjectsSectionComponent implements OnInit {
         'Contributed to system optimization and ongoing platform enhancements.',
       ],
       technologies: ['Flutter', '.NET Core', 'SQL Server', 'Entity Framework Core', 'GetX', 'REST APIs', 'Firebase Cloud Messaging', 'JWT Authentication'],
-      demoUrl: '#',
+      demoUrl: 'https://play.google.com/store/apps/details?id=com.sevenaag.food_distribution&hl=en',
+      demoLabel: 'View on Google Play',
       image: 'assets/projects/7AG.png',
     },
     {
@@ -90,7 +91,6 @@ export class ProjectsSectionComponent implements OnInit {
         'Enhanced system reliability for low-connectivity environments.',
       ],
       technologies: ['Flutter', 'SQLite', 'REST APIs', 'ERP Integration', 'Offline Synchronization'],
-      demoUrl: '#',
       image: 'assets/projects/POS.png',
     },
     {
@@ -99,7 +99,8 @@ export class ProjectsSectionComponent implements OnInit {
       timeframe: '2023',
       role: 'Mobile Application Developer',
       longDescription:
-        'Sales-force automation and order-management app for field teams. Provides customer management, product catalog, order booking, and reliable synchronization between mobile devices and central systems.',
+        'Sales-order booking app for field teams with customer profiles, product catalog, dashboards, reports, user-level security, and full offline availability with Splendid Accounts synchronization.',
+      impact: '10K+ downloads on Google Play',
       contributions: [
         'Developed mobile application features and user workflows.',
         'Implemented offline order processing capabilities.',
@@ -107,7 +108,8 @@ export class ProjectsSectionComponent implements OnInit {
         'Enhanced application performance and usability for field operations.',
       ],
       technologies: ['Flutter', 'SQLite', 'REST APIs', 'Offline Storage', 'Data Synchronization'],
-      demoUrl: '#',
+      demoUrl: 'https://play.google.com/store/apps/details?id=com.isplendid.OrderBookerApp&hl=en',
+      demoLabel: 'View on Google Play',
       image: 'assets/projects/ordre-booker-app.png',
     },
     {
@@ -124,7 +126,8 @@ export class ProjectsSectionComponent implements OnInit {
         'Improved reliability and consistency of enterprise data exchange.',
       ],
       technologies: ['.NET Core', 'C#', 'SQL Server', 'Entity Framework Core', 'REST APIs', 'ERP Integration'],
-      demoUrl: '#',
+      demoUrl: 'https://app.splendidaccounts.com/',
+      demoLabel: 'View Live Platform',
       image: 'assets/projects/splendid.png',
     },
     {
@@ -141,15 +144,11 @@ export class ProjectsSectionComponent implements OnInit {
         'Supported testing and quality assurance initiatives.',
       ],
       technologies: ['Frontend Development', 'API Integration', 'Payment Systems', 'Testing & Quality Assurance'],
-      demoUrl: '#',
       image: 'assets/projects/pay-my-tuition.png',
     },
   ];
 
   ngOnInit(): void {
-    this.title.setTitle('Projects — ' + 'Sheheryar Hussain');
-    this.meta.updateTag({ name: 'description', content: 'Selected projects and case studies: Logistic Hub, SA-POS, Order Booker, Splendid Accounts, PayMyTuition.' });
-
     // JSON-LD for projects (SoftwareApplication / Project snippets)
     try {
       const ldId = 'projects-ld-json';
@@ -157,7 +156,7 @@ export class ProjectsSectionComponent implements OnInit {
       const projectSchemas = this.projects.map(p => ({
         '@type': 'SoftwareApplication',
         name: p.title,
-        description: p.summary,
+        description: p.longDescription || p.summary,
         applicationCategory: 'BusinessApplication',
         url: p.demoUrl || p.repoUrl || this.doc.location?.origin || '',
       }));

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT, CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -34,8 +33,6 @@ interface SocialProfile {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactSectionComponent implements OnInit {
-  private readonly meta = inject(Meta);
-  private readonly title = inject(Title);
   private readonly doc = inject(DOCUMENT);
   private readonly fb = inject(FormBuilder);
   private readonly message = inject(NzMessageService);
@@ -71,9 +68,6 @@ export class ContactSectionComponent implements OnInit {
       { type: 'github', theme: 'fill', url: this.github, label: 'GitHub' },
       { type: 'mail', theme: 'fill', url: `mailto:${this.email}`, label: 'Email Contact' }
     ];
-
-    this.title.setTitle('Contact — Let\'s Work Together — ' + this.locationTitle);
-    this.meta.updateTag({ name: 'description', content: `Contact — send a message or download resume.` });
 
     const ld = {
       '@context': 'https://schema.org',

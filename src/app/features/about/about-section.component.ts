@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { DownloadCvButtonComponent } from '../../shared/ui/download-cv-button/download-cv-button';
-import { Meta, Title } from '@angular/platform-browser';
 
 /** Data models used by the About section — keep the UI fully data-driven */
 export interface AboutMetric {
@@ -23,14 +21,11 @@ export interface CareerMilestone {
 
 @Component({
   selector: 'app-about-section',
-  imports: [NzIconModule, DownloadCvButtonComponent],
+  imports: [NzIconModule],
   templateUrl: './about-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutSectionComponent {
-  private readonly title = inject(Title);
-  private readonly meta = inject(Meta);
-
   readonly sectionHeading = 'About Me';
 
   readonly mainParagraphs = [
@@ -83,12 +78,6 @@ readonly careerMilestones: readonly CareerMilestone[] = [
     roleDescription: 'Implemented .NET Core APIs for logistics automation.'
   }
 ];
-
-  constructor() {
-    // Ensure this section contributes to page meta for SEO (non-destructive — page-level Title already exists)
-    this.title.setTitle('About — Sheheryar Hussain');
-    this.meta.updateTag({ name: 'description', content: 'About Sheheryar Hussain — software engineer focusing on scalable web applications, leadership, and product delivery.' });
-  }
 
   // Expose a computed flag for layout tweaks if needed in future
   readonly hasMilestones = computed(() => this.careerMilestones.length > 0);

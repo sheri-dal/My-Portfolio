@@ -11,6 +11,10 @@
   },
   "private": true,
   "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": "22.12.x",
+    "npm": "10.9.x"
+  },
   "dependencies": {
     "@angular/animations": "^21.2.14",
     "@angular/common": "^21.2.0",

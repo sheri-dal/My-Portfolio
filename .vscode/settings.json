@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.env.windows": {
+    "PATH": "${env:LOCALAPPDATA}\\nvm\\v22.12.0;${env:PATH}"
+  }
+}

@@ -51,7 +51,7 @@
                         class="p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800/50 flex flex-col justify-center items-start shadow-sm dark:shadow-none transition-all duration-200 hover:border-purple-500/30">
                         <div
                             class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-white dark:via-purple-300 dark:to-purple-400 bg-clip-text text-transparent mb-1">
-                            {{ m.value }}</div>
+                            {{ m.value | translate }}</div>
                         <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium tracking-wide">{{
                             m.label }}</div>
                     </div>
@@ -84,11 +84,11 @@
 
                         <div class="flex flex-col pt-1 md:pt-4 text-left px-1">
                             <div class="text-sm font-bold text-purple-600 dark:text-purple-400 mb-1.5 tracking-wider">{{
-                                node.year }}</div>
+                                node.year | translate }}</div>
 
                             <div
                                 class="text-sm sm:text-base font-bold text-slate-900 dark:!text-white leading-snug tracking-tight mb-1">
-                                {{ node.companyTitle }}</div>
+                                {{ node.companyTitle | translate }}</div>
 
                             <div
                                 class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-[280px] md:max-w-[220px] lg:max-w-[260px]">
@@ -185,15 +185,15 @@
 
                         <div class="flex flex-col pt-1 md:pt-4 text-left px-1">
                             <div class="text-sm font-bold text-purple-600 dark:text-purple-400 mb-1.5 tracking-wider">{{
-                                node.year }}</div>
+                                node.year | translate }}</div>
 
                             <div
                                 class="text-sm sm:text-base font-bold text-slate-900 dark:!text-white leading-snug tracking-tight mb-1">
-                                {{ node.companyTitle }}</div>
+                                {{ node.companyTitle | translate }}</div>
 
                             <div
                                 class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal leading-relaxed max-w-[280px] md:max-w-[220px] lg:max-w-[260px]">
-                                {{ node.roleDescription }}
+                                {{ node.roleDescription | translate }}
                             </div>
                         </div>
                     </article>

@@ -13,8 +13,8 @@ const GERMAN: Record<string, string> = {
   'Download CV': 'Lebenslauf herunterladen',
   'Available for new opportunities': 'Offen für neue Möglichkeiten',
   'Hello, I am': 'Hallo, ich bin',
-  'Full-Stack Software Engineer': 'Full-Stack Softwareentwickler',
-  'building dependable digital products.': 'entwickelt zuverlässige digitale Produkte.',
+  'Full-Stack Software Engineer': 'Full-Stack-Softwareentwickler',
+  'building dependable digital products.': 'Ich entwickle zuverlässige digitale Produkte.',
   'View My Work': 'Meine Projekte',
   'Get In Touch': 'Kontakt aufnehmen',
   '.NET Core & C#': '.NET Core & C#',
@@ -39,6 +39,7 @@ const GERMAN: Record<string, string> = {
   'Projects Delivered': 'Projekte umgesetzt',
   'Leadership & Mentoring': 'Führung & Mentoring',
   'Freelance & Enterprise Work': 'Freelance & Enterprise',
+  Trusted: 'Bewährt',
   'Career Journey': 'Beruflicher Werdegang',
   'Results-driven Full-Stack Software Engineer with 4+ years of experience building scalable enterprise-grade web, mobile, and backend systems using .NET Core, C#, Flutter, and SQL Server. I deliver end-to-end solutions including APIs, offline-first mobile apps, and ERP integrations.':
     'Ergebnisorientierter Full-Stack-Softwareentwickler mit über vier Jahren Erfahrung in skalierbaren Web-, Mobile- und Backend-Systemen mit .NET Core, C#, Flutter und SQL Server. Ich liefere End-to-End-Lösungen einschließlich APIs, Offline-First-Apps und ERP-Integrationen.',
@@ -63,11 +64,11 @@ const GERMAN: Record<string, string> = {
   'My capability set combines architecture thinking, implementation discipline, and product-first execution to deliver performant systems that support real business growth.':
     'Meine Kompetenzen verbinden Architekturdenken, disziplinierte Umsetzung und Produktorientierung für leistungsfähige Systeme, die nachhaltiges Wachstum unterstützen.',
   'Designing robust frontend systems with Angular, Tailwind, and accessibility-first patterns.':
-    'Robuste Frontend-Systeme mit Angular, Tailwind und barrierefreien Designmustern.',
+    'Entwicklung robuster Frontend-Systeme mit Angular, Tailwind und Accessibility-First-Ansätzen.',
   'Developing secure backend APIs and business services for enterprise workflows.':
-    'Sichere Backend-APIs und Business-Services für Enterprise-Prozesse.',
+    'Entwicklung sicherer Backend-APIs und Business-Services für Enterprise-Workflows.',
   'Operationalizing deployments through CI/CD, observability, and cloud-native practices.':
-    'Zuverlässige Deployments durch CI/CD, Observability und Cloud-native Praktiken.',
+    'Automatisierte Deployments durch CI/CD, Observability und Cloud-native Praktiken.',
   'Modern UI architecture, reusable design systems, and responsive user experiences.':
     'Moderne UI-Architektur, wiederverwendbare Designsysteme und responsive Nutzererlebnisse.',
   'Cross-platform mobile applications with offline-first patterns and performant native-like UX.':
@@ -83,6 +84,10 @@ const GERMAN: Record<string, string> = {
   'Developer tooling and workflow orchestration that accelerates product iteration.':
     'Entwicklerwerkzeuge und Workflows für schnellere Produktiterationen.',
   Work: 'Projekte',
+  'Selected projects and case studies showcasing enterprise systems, offline-first mobile apps, and high-performance APIs.':
+    'Ausgewählte Projekte und Fallstudien: Enterprise-Systeme, Offline-First-Apps und performante APIs.',
+  'Due to client confidentiality agreements and intellectual property ownership, source code and certain implementation details are not publicly available.':
+    'Aufgrund von Vertraulichkeitsvereinbarungen und geistigen Eigentumsrechten der Kunden sind Quellcode und bestimmte Implementierungsdetails nicht öffentlich verfügbar.',
   'Selected Client Engagements': 'Ausgewählte Kundenprojekte',
   'Key Contributions': 'Wichtige Beiträge',
   Technologies: 'Technologien',
@@ -136,6 +141,28 @@ const GERMAN: Record<string, string> = {
   'ERP and accounting integration work focused on financial operations, inventory management, and automation. Delivered secure integration services and reliable data-exchange workflows between enterprise systems and external applications.':
     'ERP- und Buchhaltungsintegration für Finanzprozesse, Bestandsverwaltung und Automatisierung mit sicheren Integrationsdiensten und zuverlässigem Datenaustausch.',
   'Career Path': 'Berufserfahrung',
+  'Freelance Full-Stack Software Engineer': 'Freelance Full-Stack-Softwareentwickler',
+  'Software Developer (Remote)': 'Softwareentwickler (Remote)',
+  'Software Developer': 'Softwareentwickler',
+  'Dot Net Developer': '.NET-Entwickler',
+  'Freelance Full-Stack Software Engineer @ Logistic Hub': 'Freelance Full-Stack-Softwareentwickler @ Logistic Hub',
+  'Software Developer (Remote) @ I-SPLENDID': 'Softwareentwickler (Remote) @ I-SPLENDID',
+  'Software Engineer @ Hub 360': 'Softwareentwickler @ Hub 360',
+  'Software Developer @ I-SPLENDID': 'Softwareentwickler @ I-SPLENDID',
+  'Dot Net Developer @ Objectual Systems LTD': '.NET-Entwickler @ Objectual Systems LTD',
+  'Dot Net Developer @ Office Automation Service': '.NET-Entwickler @ Office Automation Service',
+  'Lead full-stack projects; architecture, APIs, and performance optimization.':
+    'Leitung von Full-Stack-Projekten mit Fokus auf Architektur, APIs und Performance-Optimierung.',
+  'Built cross-platform apps and backend APIs with offline sync.':
+    'Entwicklung plattformübergreifender Apps und Backend-APIs mit Offline-Synchronisierung.',
+  'Worked on payment features and integrations.':
+    'Mitarbeit an Zahlungsfunktionen und Integrationen.',
+  'Led development of an offline-capable POS integrated with ERP.':
+    'Leitung der Entwicklung eines offlinefähigen, ERP-integrierten POS-Systems.',
+  'Built and optimized backend services for high-concurrency systems.':
+    'Entwicklung und Optimierung von Backend-Services für hochparallele Systeme.',
+  'Implemented .NET Core APIs for logistics automation.':
+    'Implementierung von .NET-Core-APIs für die Logistikautomatisierung.',
   'Designed and developed a complete logistics management platform using .NET Core and SQL Server. Built scalable REST APIs, authentication, and workflow modules. Managed deployment, VPS hosting, and CI/CD pipelines while optimizing API performance for high-volume workflows.':
     'Konzeption und Entwicklung einer vollständigen Logistikplattform mit .NET Core und SQL Server, skalierbaren REST-APIs, Authentifizierung, Workflow-Modulen, VPS-Hosting und CI/CD.',
   'Develop cross-platform applications with Flutter and backend APIs in .NET Core. Implement offline-first patterns, synchronization strategies, and enterprise integrations.':
@@ -153,8 +180,10 @@ const GERMAN: Record<string, string> = {
   "Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something exceptional together.":
     'Sie planen ein Projekt oder möchten zusammenarbeiten? Ich freue mich auf Ihre Nachricht. Lassen Sie uns gemeinsam etwas Besonderes schaffen.',
   Email: 'E-Mail',
+  'Email Address': 'E-Mail-Adresse',
   Phone: 'Telefon',
   Location: 'Standort',
+  'Nuremberg, Germany': 'Nürnberg, Deutschland',
   'Full Name': 'Vollständiger Name',
   Subject: 'Betreff',
   Message: 'Nachricht',
@@ -169,7 +198,7 @@ const GERMAN: Record<string, string> = {
   'Portfolio Assistant': 'Portfolio-Assistent',
   'Online • Instant answers': 'Online • Sofortige Antworten',
   'Top skills': 'Top-Kenntnisse',
-  'Ask me': 'Frag mich',
+  'Ask me': 'Fragen Sie mich',
   'Continue on WhatsApp': 'Auf WhatsApp fortsetzen',
   'Automated answers • No chat data is stored': 'Automatische Antworten • Keine Chatdaten werden gespeichert',
   'Ask about skills or projects...': 'Fragen Sie nach Kenntnissen oder Projekten...',

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-download-cv-button',
-  imports: [NzIconModule],
+  imports: [NzIconModule, TranslatePipe],
   templateUrl: './download-cv-button.html',
   styleUrl: './download-cv-button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

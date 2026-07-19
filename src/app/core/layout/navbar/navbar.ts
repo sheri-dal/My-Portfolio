@@ -9,6 +9,8 @@ import { ThemeToggleComponent } from '../../../shared/ui/theme-toggle/theme-togg
 import { DownloadCvButtonComponent } from '../../../shared/ui/download-cv-button/download-cv-button';
 import { MobileMenuComponent } from '../mobile-menu/mobile-menu';
 import { NAV_LINKS } from './nav-links';
+import { LanguageToggleComponent } from '../../../shared/ui/language-toggle/language-toggle';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +21,8 @@ import { NAV_LINKS } from './nav-links';
     NzDrawerModule,
     ThemeToggleComponent,
     DownloadCvButtonComponent,
+    LanguageToggleComponent,
+    TranslatePipe,
   ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',

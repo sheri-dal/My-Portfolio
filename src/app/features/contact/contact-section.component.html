@@ -10,16 +10,16 @@
           <div>
             <header class="space-y-2 mb-6">
               <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600 dark:text-purple-400">
-                Collaboration
+                {{ 'Collaboration' | translate }}
               </p>
               <h2 id="contact-heading" class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:!text-white">
-                Let's Work Together
+                {{ "Let's Work Together" | translate }}
               </h2>
               <div class="h-[3px] w-16 bg-purple-600 dark:bg-purple-400 mt-3" aria-hidden="true"></div>
             </header>
             
             <p class="text-base sm:text-lg font-normal leading-relaxed text-slate-600 dark:text-slate-400 max-w-xl">
-              Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something exceptional together.
+              {{ "Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something exceptional together." | translate }}
             </p>
 
             <address class="mt-10 not-italic space-y-6">
@@ -29,7 +29,7 @@
                     <span nz-icon [nzType]="item.icon" [nzTheme]="item.theme" class="text-xl" aria-hidden="true"></span>
                   </span>
                   <div>
-                    <div class="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">{{ item.label }}</div>
+                    <div class="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">{{ item.label | translate }}</div>
                     
                     @if (item.href) {
                       <a class="text-sm sm:text-base text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors" [href]="item.href">
@@ -66,10 +66,10 @@
 
               <nz-form-item class="mb-0">
                 <nz-form-label class="pb-1 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:!text-white" style="color: inherit;" style="color: '!white;'">
-                  Full Name
+                  {{ 'Full Name' | translate }}
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('fullName')">
-                  <input nz-input formControlName="fullName" placeholder="Your name" 
+                  <input nz-input formControlName="fullName" [placeholder]="'Your name' | translate"
                     class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
                   
                   @if (getControl('fullName').invalid && (getControl('fullName').dirty || getControl('fullName').touched)) {
@@ -101,7 +101,7 @@
                   Subject
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('subject')">
-                  <input nz-input formControlName="subject" placeholder="How can I help?" 
+                  <input nz-input formControlName="subject" [placeholder]="'How can I help?' | translate"
                     class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
                   
                   @if (getControl('subject').invalid && (getControl('subject').dirty || getControl('subject').touched)) {
@@ -117,7 +117,7 @@
                   Message
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('message')">
-                  <textarea nz-input rows="5" formControlName="message" placeholder="Tell me about your project or opportunity..." 
+                  <textarea nz-input rows="5" formControlName="message" [placeholder]="'Tell me about your project or opportunity...' | translate"
                     class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl p-4 transition-all resize-none dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white"></textarea>
                   
                   @if (getControl('message').invalid && (getControl('message').dirty || getControl('message').touched)) {
@@ -131,7 +131,7 @@
               <div class="flex justify-end pt-2">
                 <button nz-button nzType="primary" [disabled]="contactForm.invalid || isSubmitting()"
                   class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 px-6 text-sm font-medium tracking-wide text-slate-900 shadow-lg shadow-purple-950/20 transition-all duration-300 hover:scale-[1.01] hover:from-purple-600 hover:to-indigo-500 dark:shadow-purple-950/50 disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 dark:disabled:from-slate-800 dark:disabled:to-slate-800 dark:disabled:text-slate-500 border-none">
-                  <span>{{ isSubmitting() ? 'Sending...' : 'Send Message' }}</span>
+                  <span>{{ (isSubmitting() ? 'Sending...' : 'Send Message') | translate }}</span>
                   <!-- <span nz-icon nzType="rocket" nzTheme="outline" aria-hidden="true"></span> -->
                 </button>
               </div>

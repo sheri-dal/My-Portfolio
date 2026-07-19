@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 interface SkillCategory {
   readonly title: string;
@@ -12,7 +13,7 @@ interface SkillCategory {
 
 @Component({
   selector: 'app-skills-section',
-  imports: [NzIconModule],
+  imports: [NzIconModule, TranslatePipe],
   templateUrl: './skills-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

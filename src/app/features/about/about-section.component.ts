@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 /** Data models used by the About section — keep the UI fully data-driven */
 export interface AboutMetric {
@@ -21,7 +22,7 @@ export interface CareerMilestone {
 
 @Component({
   selector: 'app-about-section',
-  imports: [NzIconModule],
+  imports: [NzIconModule, TranslatePipe],
   templateUrl: './about-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

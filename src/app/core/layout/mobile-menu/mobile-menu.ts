@@ -9,10 +9,12 @@ import { ThemeToggleComponent } from '../../../shared/ui/theme-toggle/theme-togg
 import { NAV_LINKS } from '../navbar/nav-links';
 import { auditTime, filter, fromEvent, take } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { LanguageToggleComponent } from '../../../shared/ui/language-toggle/language-toggle';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-mobile-menu',
-  imports: [RouterModule, NgOptimizedImage, NzIconModule, ThemeToggleComponent, DownloadCvButtonComponent],
+  imports: [RouterModule, NgOptimizedImage, NzIconModule, ThemeToggleComponent, DownloadCvButtonComponent, LanguageToggleComponent, TranslatePipe],
   templateUrl: './mobile-menu.html',
   styleUrl: './mobile-menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

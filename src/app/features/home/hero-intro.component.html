@@ -21,28 +21,28 @@
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
         </span>
-        {{ profile.badgeText }}
+        {{ profile.badgeText | translate }}
       </div>
 
       <p class="mt-7 text-xs font-bold uppercase tracking-[0.38em] text-slate-500 dark:text-slate-400">
-        {{ profile.salutation }}
+        {{ profile.salutation | translate }}
       </p>
       <h1 id="hero-heading" class="mt-3 text-5xl font-bold leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl dark:text-white">
         {{ profile.fullName }}
       </h1>
       <p class="mt-5 max-w-2xl text-xl font-semibold leading-tight text-purple-700 sm:text-2xl dark:text-purple-300">
-        {{ profile.jobTitle }}
+        {{ profile.jobTitle | translate }}
         <span class="text-slate-400 dark:text-slate-600"> — </span>
-        <span class="text-slate-700 dark:text-slate-200">building dependable digital products.</span>
+        <span class="text-slate-700 dark:text-slate-200">{{ 'building dependable digital products.' | translate }}</span>
       </p>
       <p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-400">
-        {{ profile.bioDescription }}
+        {{ profile.bioDescription | translate }}
       </p>
 
       <div class="mt-7 flex flex-wrap gap-2" aria-label="Core specializations">
         @for (area of profile.focusAreas; track area) {
           <span class="rounded-full border border-slate-200 bg-white/75 px-3.5 py-2 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-300">
-            {{ area }}
+            {{ area | translate }}
           </span>
         }
       </div>
@@ -52,14 +52,14 @@
           class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 px-6 text-sm font-semibold text-white shadow-lg shadow-purple-900/20 transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:ring-offset-slate-950"
           [href]="profile.primaryCtaUrl"
         >
-          {{ profile.primaryCtaText }}
+          {{ profile.primaryCtaText | translate }}
           <span aria-hidden="true">→</span>
         </a>
         <a
           class="inline-flex h-12 items-center justify-center rounded-xl border border-slate-300 bg-white/70 px-6 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-purple-300 hover:text-purple-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200 dark:hover:border-purple-700"
           [href]="profile.secondaryCtaUrl"
         >
-          {{ profile.secondaryCtaText }}
+          {{ profile.secondaryCtaText | translate }}
         </a>
       </div>
 
@@ -87,8 +87,8 @@
         >
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
           <div class="absolute inset-x-0 bottom-0 p-7 text-white">
-            <p class="text-xs font-bold uppercase tracking-[0.3em] text-purple-300">Based in Nuremberg, Germany</p>
-            <p class="mt-3 max-w-md text-xl font-semibold leading-snug">Available for full-time roles, product collaborations, and high-impact freelance work.</p>
+            <p class="text-xs font-bold uppercase tracking-[0.3em] text-purple-300">{{ 'Based in Nuremberg, Germany' | translate }}</p>
+            <p class="mt-3 max-w-md text-xl font-semibold leading-snug">{{ 'Available for full-time roles, product collaborations, and high-impact freelance work.' | translate }}</p>
           </div>
         </div>
 
@@ -96,7 +96,7 @@
           @for (point of profile.proofPoints; track point.label) {
             <div class="px-3 text-center">
               <div class="text-xl font-bold text-slate-950 sm:text-2xl dark:text-white">{{ point.value }}</div>
-              <div class="mt-1 text-[10px] font-medium uppercase leading-4 tracking-wide text-slate-500 sm:text-xs dark:text-slate-400">{{ point.label }}</div>
+              <div class="mt-1 text-[10px] font-medium uppercase leading-4 tracking-wide text-slate-500 sm:text-xs dark:text-slate-400">{{ point.label | translate }}</div>
             </div>
           }
         </div>

@@ -2,8 +2,8 @@
   <div class="w-full">
     <div class="flex flex-col px-6 py-12 sm:px-12 md:px-20 lg:pl-24 lg:py-16">
       <header class="max-w-4xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600 dark:text-purple-400">Work</p>
-        <h2 id="projects-heading" class="mt-2 text-3xl font-bold tracking-tight text-slate-950 dark:!text-white sm:text-4xl">{{ sectionHeading }}</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600 dark:text-purple-400">{{ 'Work' | translate }}</p>
+        <h2 id="projects-heading" class="mt-2 text-3xl font-bold tracking-tight text-slate-950 dark:!text-white sm:text-4xl">{{ sectionHeading | translate }}</h2>
         <div class="relative mt-4 mb-6 h-[3px] w-16 bg-purple-600 dark:bg-purple-400"></div>
         <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-white">Selected projects and case studies showcasing enterprise systems, offline-first mobile apps, and high-performance APIs.</p>
       </header>
@@ -20,29 +20,29 @@
                     <div class="flex items-start justify-between">
                       <div>
                         <h3 class="text-xl font-semibold heading-accent">{{ proj.title }}</h3>
-                        <div class="text-sm text-slate-500 dark:text-slate-400">{{ proj.role }} • <span class="ml-2">{{ proj.timeframe }}</span></div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">{{ proj.role | translate }} • <span class="ml-2">{{ proj.timeframe | translate }}</span></div>
                         @if (proj.impact) {
                           <span class="mt-3 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300">
-                            {{ proj.impact }}
+                            {{ proj.impact | translate }}
                           </span>
                         }
                       </div>
                     </div>
 
-                    <p class="mt-4 text-sm text-slate-700 dark:text-white/90">{{ proj.longDescription }}</p>
+                    <p class="mt-4 text-sm text-slate-700 dark:text-white/90">{{ proj.longDescription | translate }}</p>
 
                     @if (proj.contributions && proj.contributions.length) {
-                      <h4 class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">Key Contributions</h4>
+                      <h4 class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">{{ 'Key Contributions' | translate }}</h4>
                       <ul class="mt-2 ml-4 list-disc text-sm text-slate-600 dark:text-slate-300">
                         @for (c of proj.contributions; track c) {
-                          <li>{{ c }}</li>
+                          <li>{{ c | translate }}</li>
                         }
                       </ul>
                     }
 
                     @if (proj.technologies && proj.technologies.length) {
                       <div class="mt-4 text-sm">
-                        <strong class="text-slate-900 dark:text-white">Technologies:</strong>
+                        <strong class="text-slate-900 dark:text-white">{{ 'Technologies' | translate }}:</strong>
                         <div class="mt-2 flex flex-wrap gap-2">
                           @for (tech of proj.technologies; track tech) {
                             <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 dark:border-slate-800 dark:bg-slate-950/40 dark:text-slate-300">{{ tech }}</span>
@@ -61,7 +61,7 @@
                           [attr.aria-label]="(proj.demoLabel || 'View project') + ': ' + proj.title"
                         >
                           <span nz-icon nzType="link" nzTheme="outline" aria-hidden="true"></span>
-                          {{ proj.demoLabel || 'View Project' }}
+                          {{ (proj.demoLabel || 'View Project') | translate }}
                           <span aria-hidden="true">↗</span>
                         </a>
                       </div>

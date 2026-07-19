@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 interface WorkHistoryItem {
   readonly dateRange: string;
@@ -10,6 +11,7 @@ interface WorkHistoryItem {
 
 @Component({
   selector: 'app-experience-section',
+  imports: [TranslatePipe],
   templateUrl: './experience-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

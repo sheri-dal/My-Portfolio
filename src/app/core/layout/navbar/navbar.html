@@ -33,7 +33,7 @@
           [attr.aria-current]="currentFragment() === link.fragment ? 'page' : null"
           (click)="onNavigate(link.fragment, $event)"
         >
-          <span>{{ link.label }}</span>
+          <span>{{ link.label | translate }}</span>
           <span
             class="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 rounded-full bg-purple-600 transition-transform duration-300 ease-in-out group-hover:scale-x-100 dark:bg-purple-400"
             [class.scale-x-100]="currentFragment() === link.fragment"
@@ -44,6 +44,7 @@
     </nav>
 
     <div class="hidden items-center gap-2 min-[831px]:flex" aria-label="Theme and CV Actions">
+      <app-language-toggle></app-language-toggle>
       <app-theme-toggle></app-theme-toggle>
       <app-download-cv-button></app-download-cv-button>
     </div>

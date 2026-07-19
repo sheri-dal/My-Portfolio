@@ -11,6 +11,7 @@ import { SkillsSectionComponent } from '../skills';
 import { ContactSectionComponent } from '../contact/contact-section.component';
 import { ProjectsSectionComponent } from '../projects/projects-section.component';
 import { CONTACT } from '../../shared/contact.constants';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 interface HeroSocialLink {
   readonly label: string;
@@ -45,7 +46,7 @@ interface HeroProfile {
 
 @Component({
   selector: 'app-hero-intro',
-  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent],
+  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent, TranslatePipe],
   templateUrl: './hero-intro.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

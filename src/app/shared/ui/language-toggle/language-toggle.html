@@ -1,0 +1,4 @@
+<div class="language-toggle" role="group" aria-label="Language / Sprache">
+  <button type="button" [class.active]="language.current() === 'en'" [attr.aria-pressed]="language.current() === 'en'" (click)="language.set('en')">EN</button>
+  <button type="button" [class.active]="language.current() === 'de'" [attr.aria-pressed]="language.current() === 'de'" (click)="language.set('de')">DE</button>
+</div>

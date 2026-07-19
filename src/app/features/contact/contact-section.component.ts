@@ -71,7 +71,7 @@ export class ContactSectionComponent implements OnInit {
 
     const ld = {
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
+      '@type': 'Person',
       name: 'Sheheryar Hussain',
       url: this.doc.location?.origin || '',
       telephone: this.phone,

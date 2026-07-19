@@ -110,7 +110,7 @@ export class ProjectsSectionComponent implements OnInit {
       technologies: ['Flutter', 'SQLite', 'REST APIs', 'Offline Storage', 'Data Synchronization'],
       demoUrl: 'https://play.google.com/store/apps/details?id=com.isplendid.OrderBookerApp&hl=en',
       demoLabel: 'View on Google Play',
-      image: 'assets/projects/ordre-booker-app.png',
+      image: 'assets/projects/order-booker-app.png',
     },
     {
       id: 'splendid-accounts',

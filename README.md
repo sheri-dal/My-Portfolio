@@ -1,59 +1,51 @@
-# Portfolio
+# Sheheryar Hussain — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+Personal portfolio of a Full-Stack Software Engineer based in Nuremberg, Germany, specializing in **.NET Core, Angular, Flutter, and SQL Server** for enterprise, ERP, logistics, and offline-first systems.
 
-## Development server
+**Live:** [sheri-dal.github.io/My-Portfolio](https://sheri-dal.github.io/My-Portfolio/)
 
-To start a local development server, run:
+## Tech Stack
 
-```bash
-ng serve
-```
+- **Framework:** Angular 21 with standalone components, signals, and OnPush change detection
+- **Styling:** Tailwind CSS 4 and ng-zorro-antd
+- **Rendering:** Angular SSR/static prerendering for GitHub Pages
+- **Features:** Dark/light theme, SEO metadata, JSON-LD, contact form, portfolio assistant, and WhatsApp handoff
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Portfolio Sections
 
-## Code scaffolding
+- Hero and professional overview
+- Skills and technical capabilities
+- Client projects with live product links
+- Career experience and milestones
+- Contact form and downloadable CV
+- Automated portfolio assistant
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Local Development
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Use the Node version declared in `.nvmrc`:
 
 ```bash
-ng build
+nvm use 22.12.0
+npm ci
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The development server runs at `http://localhost:4200`.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Production Build
 
 ```bash
-ng test
+npm run build -- --configuration production --output-mode static --base-href /My-Portfolio/
 ```
 
-## Running end-to-end tests
+Static output is generated in `dist/portfolio/browser`.
 
-For end-to-end (e2e) testing, run:
+## Deployment
 
-```bash
-ng e2e
-```
+Every push to `main` triggers `.github/workflows/deploy-github-pages.yml`, which builds and publishes the site to GitHub Pages.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+Email: shaharyarhussain0@gmail.com
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[LinkedIn](https://www.linkedin.com/in/sheheryar-hussain-dev/) · [GitHub](https://github.com/sheri-dal)

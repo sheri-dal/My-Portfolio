@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "C:\\Users\\Hp\\AppData\\Local\\nvm\\v22.12.0\\node.exe node_modules\\@angular\\cli\\bin\\ng.js serve",
+    "start": "node scripts/run-angular.cjs serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

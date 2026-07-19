@@ -129,7 +129,6 @@ export class HeroIntroComponent implements OnInit {
           url: this.document.baseURI,
           sameAs,
         };
-
         const json = JSON.stringify(personSchema, null, 2);
 
         if (existing) {

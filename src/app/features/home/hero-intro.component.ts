@@ -90,9 +90,9 @@ export class HeroIntroComponent implements OnInit {
     ],
     darkBackgroundImagePath: 'assets/icons/Hero-sec-img.png',
     lightBackgroundImagePath: 'assets/icons/Hero-sec-img-light.png',
-    seoTitle: 'Sheheryar Hussain | Full-Stack .NET, Angular & Flutter Engineer',
+    seoTitle: 'Sheheryar Hussain | Full-Stack .NET, Angular & Flutter Developer in Nuremberg',
     seoDescription:
-      'Full-Stack Software Engineer in Nuremberg specializing in .NET Core, Angular, Flutter, SQL Server, scalable APIs, offline-first apps, and enterprise integrations.',
+      'Sheheryar Hussain, Full-Stack Software Engineer in Nuremberg (Nürnberg), Germany: .NET Core / C#, ASP.NET Core APIs, Angular, Flutter and SQL Server for ERP, POS and logistics systems. Available for jobs and freelance projects.',
   };
 
   readonly backgroundImage = computed(() =>
@@ -123,10 +123,11 @@ export class HeroIntroComponent implements OnInit {
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:url', content: 'https://sheri-dal.github.io/My-Portfolio/' });
     this.meta.updateTag({ property: 'og:site_name', content: 'Sheheryar Hussain Portfolio' });
-    this.meta.updateTag({ property: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({ property: 'twitter:title', content: this.profile.seoTitle });
-    this.meta.updateTag({ property: 'twitter:description', content: this.profile.seoDescription });
-    this.meta.updateTag({ property: 'twitter:image', content: absoluteImageUrl });
+    this.meta.updateTag({ property: 'og:locale', content: 'en_US' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: this.profile.seoTitle });
+    this.meta.updateTag({ name: 'twitter:description', content: this.profile.seoDescription });
+    this.meta.updateTag({ name: 'twitter:image', content: absoluteImageUrl });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, max-image-preview:large' });
 
     const canonicalUrl = isPlatformBrowser(this.platformId)
@@ -140,35 +141,67 @@ export class HeroIntroComponent implements OnInit {
     }
     canonical.setAttribute('href', canonicalUrl);
 
-    // Inject or update JSON-LD structured data for improved SEO (Person)
-    if (isPlatformBrowser(this.platformId)) {
-      try {
-        const ldId = 'hero-ld-json';
-        const existing = this.document.getElementById(ldId) as HTMLScriptElement | null;
-        const sameAs = this.profile.socialLinks.map(s => s.url);
-        const personSchema = {
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          name: this.profile.fullName,
-          jobTitle: this.profile.jobTitle,
-          description: this.profile.seoDescription,
-          url: this.document.baseURI,
-          sameAs,
-        };
-        const json = JSON.stringify(personSchema, null, 2);
-
-        if (existing) {
-          existing.textContent = json;
-        } else {
-          const script = this.document.createElement('script');
-          script.type = 'application/ld+json';
-          script.id = ldId;
-          script.textContent = json;
-          this.document.head.appendChild(script);
-        }
-      } catch {
-        // non-blocking: best-effort JSON-LD injection
+    // JSON-LD Person + WebSite. Runs on the server too, so the prerendered HTML
+    // that crawlers read already contains it (not only after JavaScript runs).
+    try {
+      const ldId = 'hero-ld-json';
+      const siteUrl = 'https://sheri-dal.github.io/My-Portfolio/';
+      const sameAs = this.profile.socialLinks
+        .map(s => s.url)
+        .filter(u => u.startsWith('http'));
+      const graph = {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': `${siteUrl}#person`,
+            name: this.profile.fullName,
+            jobTitle: this.profile.jobTitle,
+            description: this.profile.seoDescription,
+            url: siteUrl,
+            image: `${siteUrl}assets/icons/logo.png`,
+            email: `mailto:${CONTACT.email}`,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Nürnberg',
+              addressRegion: 'Bayern',
+              addressCountry: 'DE',
+            },
+            alumniOf: {
+              '@type': 'CollegeOrUniversity',
+              name: 'ILMA University',
+            },
+            knowsLanguage: ['English', 'Urdu', 'German'],
+            knowsAbout: [
+              'C#', '.NET Core', 'ASP.NET Core', 'REST APIs', 'Entity Framework',
+              'SQL Server', 'Angular', 'TypeScript', 'Flutter', 'Dart',
+              'Offline-first mobile apps', 'ERP integration', 'Docker', 'Azure', 'CI/CD',
+            ],
+            sameAs,
+          },
+          {
+            '@type': 'WebSite',
+            '@id': `${siteUrl}#website`,
+            url: siteUrl,
+            name: 'Sheheryar Hussain Portfolio',
+            inLanguage: 'en',
+            publisher: { '@id': `${siteUrl}#person` },
+          },
+        ],
+      };
+      const json = JSON.stringify(graph);
+      const existing = this.document.getElementById(ldId) as HTMLScriptElement | null;
+      if (existing) {
+        existing.textContent = json;
+      } else {
+        const script = this.document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = ldId;
+        script.textContent = json;
+        this.document.head.appendChild(script);
       }
+    } catch {
+      // non-blocking: best-effort JSON-LD injection
     }
   }
 }

@@ -12,6 +12,8 @@ import { ContactSectionComponent } from '../contact/contact-section.component';
 import { ProjectsSectionComponent } from '../projects/projects-section.component';
 import { CONTACT } from '../../shared/contact.constants';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { CountUpDirective } from '../../shared/directives/count-up.directive';
 
 interface HeroSocialLink {
   readonly label: string;
@@ -46,7 +48,7 @@ interface HeroProfile {
 
 @Component({
   selector: 'app-hero-intro',
-  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent, TranslatePipe],
+  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent, TranslatePipe, ScrollRevealDirective, CountUpDirective],
   templateUrl: './hero-intro.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

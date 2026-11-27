@@ -1,10 +1,11 @@
-<section id="projects" aria-labelledby="projects-heading" class="relative isolate scroll-mt-24 w-full bg-white dark:bg-[#030712] dark:text-slate-100 border-t border-slate-200/50 dark:border-slate-900/50">
-  <div class="w-full">
+<section id="projects" aria-labelledby="projects-heading" class="relative isolate scroll-mt-28 w-full overflow-hidden bg-white dark:bg-[#030712] dark:text-slate-100 border-t border-slate-200/50 dark:border-slate-900/50">
+  <div class="aurora-blob right-0 top-0 h-80 w-80 bg-cyan-400/15 dark:bg-cyan-500/10" aria-hidden="true"></div>
+  <div class="relative w-full">
     <div class="flex flex-col px-6 py-12 sm:px-12 md:px-20 lg:pl-24 lg:py-16">
-      <header class="max-w-4xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600 dark:text-purple-400">{{ 'Work' | translate }}</p>
-        <h2 id="projects-heading" class="mt-2 text-3xl font-bold tracking-tight text-slate-950 dark:!text-white sm:text-4xl">{{ sectionHeading | translate }}</h2>
-        <div class="relative mt-4 mb-6 h-[3px] w-16 bg-purple-600 dark:bg-purple-400"></div>
+      <header class="max-w-4xl" appScrollReveal>
+        <p class="section-kicker">{{ 'Work' | translate }}</p>
+        <h2 id="projects-heading" class="mt-3 text-3xl font-bold tracking-tight text-slate-950 dark:!text-white sm:text-4xl">{{ sectionHeading | translate }}</h2>
+        <div class="relative mt-4 mb-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-cyan-500"></div>
         <p class="mt-3 max-w-2xl text-sm text-slate-600 dark:text-white">{{ 'Selected projects and case studies showcasing enterprise systems, offline-first mobile apps, and high-performance APIs.' | translate }}</p>
       </header>
 
@@ -13,13 +14,13 @@
           <p class="text-sm italic text-slate-600 dark:text-slate-400">*{{ 'Due to client confidentiality agreements and intellectual property ownership, source code and certain implementation details are not publicly available.' | translate }}*</p>
 
           <div class="mt-6 space-y-6">
-            @for (proj of projects; track proj.id) {
-              <nz-card nzBorderless class="project-row p-6">
+            @for (proj of projects; track proj.id; let i = $index) {
+              <nz-card nzBorderless class="project-row p-6" [appScrollReveal]="(i % 3) * 90">
                 <div class="flex flex-col lg:flex-row-reverse gap-6 items-stretch">
                   <div class="flex-1">
                     <div class="flex items-start justify-between">
                       <div>
-                        <h3 class="text-xl font-semibold heading-accent">{{ proj.title }}</h3>
+                        <h3 class="text-xl font-semibold gradient-text">{{ proj.title }}</h3>
                         <div class="text-sm text-slate-500 dark:text-slate-400">{{ proj.role | translate }} • <span class="ml-2">{{ proj.timeframe | translate }}</span></div>
                         @if (proj.impact) {
                           <span class="mt-3 inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300">
@@ -54,7 +55,7 @@
                     @if (proj.demoUrl) {
                       <div class="mt-6">
                         <a
-                          class="project-action inline-flex items-center gap-2 rounded-xl bg-purple-700 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/15 hover:bg-purple-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:ring-offset-slate-950"
+                          class="project-action lift-on-hover inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 via-fuchsia-600 to-cyan-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:ring-offset-slate-950"
                           [href]="proj.demoUrl"
                           target="_blank"
                           rel="noopener noreferrer"

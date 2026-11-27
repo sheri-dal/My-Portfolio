@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { CountUpDirective } from '../../shared/directives/count-up.directive';
 
 /** Data models used by the About section — keep the UI fully data-driven */
 export interface AboutMetric {
@@ -22,7 +24,7 @@ export interface CareerMilestone {
 
 @Component({
   selector: 'app-about-section',
-  imports: [NzIconModule, TranslatePipe],
+  imports: [NzIconModule, TranslatePipe, ScrollRevealDirective, CountUpDirective],
   templateUrl: './about-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

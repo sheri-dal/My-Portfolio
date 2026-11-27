@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, PLATFORM_ID, inject, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, QueryList, ViewChildren, inject, signal } from '@angular/core';
 import { DOCUMENT, NgOptimizedImage, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -28,7 +28,7 @@ import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
   styleUrl: './navbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
   private readonly router = inject(Router);
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
@@ -37,16 +37,12 @@ export class NavbarComponent {
   private mobileDrawerRef: NzDrawerRef<MobileMenuComponent> | null = null;
   private readonly destroyRef = inject(DestroyRef);
 
+  @ViewChildren('navLink') private readonly navLinkElements!: QueryList<ElementRef<HTMLAnchorElement>>;
+
   readonly links = NAV_LINKS;
   readonly mobileOpen = signal(false);
   readonly currentFragment = signal('home');
-
-  protected readonly activeOptions = {
-    paths: 'exact',
-    queryParams: 'ignored',
-    matrixParams: 'ignored',
-    fragment: 'exact',
-  } as const;
+  readonly indicatorStyle = signal<{ left: string; width: string; opacity: number }>({ left: '0px', width: '0px', opacity: 0 });
 
   constructor() {
     this.syncCurrentFragment();
@@ -60,9 +56,23 @@ export class NavbarComponent {
       .subscribe(() => this.syncCurrentFragment());
   }
 
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    this.navLinkElements.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.updateIndicator());
+    queueMicrotask(() => this.updateIndicator());
+
+    fromEvent(window, 'resize')
+      .pipe(auditTime(120), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.updateIndicator());
+  }
+
   onNavigate(fragment: string, event?: Event): void {
     event?.preventDefault();
     this.currentFragment.set(fragment);
+    this.updateIndicator();
 
     void this.router.navigate(['/'], { fragment }).then(() => {
       this.scrollToFragment(fragment);
@@ -70,11 +80,9 @@ export class NavbarComponent {
   }
 
   private scrollToFragment(fragment: string): void {
+    // ViewportScroller's offset (set globally in App) keeps sections clear of the
+    // floating navbar; scrollToAnchor already scrolls smoothly via CSS `scroll-behavior`.
     this.viewportScroller.scrollToAnchor(fragment);
-
-    if (isPlatformBrowser(this.platformId)) {
-      this.document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
   }
 
   openMobileMenu(): void {
@@ -117,6 +125,7 @@ export class NavbarComponent {
 
     if (routeFragment) {
       this.currentFragment.set(routeFragment);
+      this.updateIndicator();
       return;
     }
 
@@ -150,6 +159,7 @@ export class NavbarComponent {
 
     if (!existingFragments.length) {
       this.currentFragment.set('home');
+      this.updateIndicator();
       return;
     }
 
@@ -169,6 +179,7 @@ export class NavbarComponent {
     }
 
     this.currentFragment.set(active);
+    this.updateIndicator();
     this.syncUrlFragment(active);
   }
 
@@ -184,5 +195,27 @@ export class NavbarComponent {
     }
 
     window.history.replaceState(window.history.state, '', nextUrl);
+  }
+
+  /** Measures the active nav link's position so the sliding pill indicator can follow it. */
+  private updateIndicator(): void {
+    if (!isPlatformBrowser(this.platformId) || !this.navLinkElements) {
+      return;
+    }
+
+    const activeFragment = this.currentFragment();
+    const activeIndex = this.links.findIndex((link) => link.fragment === activeFragment);
+    const activeEl = this.navLinkElements.get(activeIndex)?.nativeElement;
+
+    if (!activeEl) {
+      this.indicatorStyle.set({ left: '0px', width: '0px', opacity: 0 });
+      return;
+    }
+
+    this.indicatorStyle.set({
+      left: `${activeEl.offsetLeft}px`,
+      width: `${activeEl.offsetWidth}px`,
+      opacity: 1,
+    });
   }
 }

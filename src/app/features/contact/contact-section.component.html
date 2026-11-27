@@ -1,36 +1,37 @@
 <section id="contact" aria-labelledby="contact-heading"
-  class="relative isolate scroll-mt-24 w-full bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 border-t border-slate-200/50 dark:border-slate-900/50">
-  
-  <div class="w-full">
+  class="relative isolate scroll-mt-28 w-full overflow-hidden bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 border-t border-slate-200/50 dark:border-slate-900/50">
+  <div class="aurora-blob -bottom-24 left-1/3 h-96 w-96 bg-purple-400/15 dark:bg-purple-500/10" aria-hidden="true"></div>
+
+  <div class="relative w-full">
     <div class="flex flex-col space-y-12 px-6 py-12 sm:px-12 md:px-20 lg:max-w-none lg:pl-24 lg:py-16">
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-start w-full">
 
-        <div class="flex flex-col justify-between h-full space-y-8 lg:col-span-5 max-w-2xl lg:max-w-none">
+        <div class="flex flex-col justify-between h-full space-y-8 lg:col-span-5 max-w-2xl lg:max-w-none" appScrollReveal>
           <div>
             <header class="space-y-2 mb-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600 dark:text-purple-400">
+              <p class="section-kicker">
                 {{ 'Collaboration' | translate }}
               </p>
               <h2 id="contact-heading" class="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:!text-white">
                 {{ "Let's Work Together" | translate }}
               </h2>
-              <div class="h-[3px] w-16 bg-purple-600 dark:bg-purple-400 mt-3" aria-hidden="true"></div>
+              <div class="h-[3px] w-16 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-500 to-cyan-500 mt-3"></div>
             </header>
-            
+
             <p class="text-base sm:text-lg font-normal leading-relaxed text-slate-600 dark:text-slate-400 max-w-xl">
               {{ "Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something exceptional together." | translate }}
             </p>
 
             <address class="mt-10 not-italic space-y-6">
               @for (item of contactDetails; track item.label) {
-                <div class="flex items-center gap-4 group">
-                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-purple-600 shadow-sm dark:border-slate-800 dark:bg-slate-900/40 dark:text-purple-400 group-hover:border-purple-500/30 transition-colors duration-300">
+                <div class="glass-panel lift-on-hover flex items-center gap-4 rounded-xl p-3 group">
+                  <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 text-white shadow-sm transition-transform duration-300 group-hover:scale-110">
                     <span nz-icon [nzType]="item.icon" [nzTheme]="item.theme" class="text-xl" aria-hidden="true"></span>
                   </span>
                   <div>
                     <div class="text-xs text-slate-400 dark:text-slate-500 font-semibold uppercase tracking-wider">{{ item.label | translate }}</div>
-                    
+
                     @if (item.href) {
                       <a class="text-sm sm:text-base text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition-colors" [href]="item.href">
                         {{ item.value | translate }}
@@ -47,7 +48,7 @@
               <div class="pt-2 flex items-center gap-4">
                 @for (profile of socialProfiles; track profile.type) {
                   <a [href]="profile.url" target="_blank" rel="noopener" [attr.aria-label]="profile.label"
-                    class="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-xl text-slate-600 transition-all duration-200 hover:border-purple-400/40 hover:bg-purple-50 hover:text-purple-600 dark:border-slate-800/80 dark:bg-slate-900/80 dark:text-slate-400 dark:hover:border-purple-500/30 dark:hover:bg-slate-800/80 dark:hover:text-purple-400 backdrop-blur-sm shadow-sm dark:shadow-none">
+                    class="glass-panel lift-on-hover flex h-12 w-12 items-center justify-center rounded-xl text-xl text-slate-600 hover:border-purple-400/40 hover:text-purple-600 dark:text-slate-400 dark:hover:text-purple-400">
                     <span nz-icon [nzType]="profile.type" [nzTheme]="profile.theme"></span>
                   </a>
                 }
@@ -60,8 +61,8 @@
           </div>
         </div>
 
-        <div class="w-full lg:col-span-7">
-          <div class="rounded-3xl border border-slate-200/60 bg-white/80 p-6 sm:p-10 backdrop-blur-sm shadow-sm dark:border-slate-800/40 dark:bg-slate-900/40">
+        <div class="w-full lg:col-span-7" [appScrollReveal]="150">
+          <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-sm">
             <form nz-form [formGroup]="contactForm" (ngSubmit)="submit()" nzLayout="vertical" class="space-y-6">
 
               <nz-form-item class="mb-0">
@@ -70,7 +71,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('fullName')">
                   <input nz-input formControlName="fullName" [placeholder]="'Your name' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('fullName').invalid && (getControl('fullName').dirty || getControl('fullName').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -86,7 +87,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('email')">
                   <input nz-input formControlName="email" placeholder="your@email.com" 
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('email').invalid && (getControl('email').dirty || getControl('email').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -102,7 +103,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('subject')">
                   <input nz-input formControlName="subject" [placeholder]="'How can I help?' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('subject').invalid && (getControl('subject').dirty || getControl('subject').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -118,7 +119,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('message')">
                   <textarea nz-input rows="5" formControlName="message" [placeholder]="'Tell me about your project or opportunity...' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl p-4 transition-all resize-none dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white"></textarea>
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl p-4 transition-all resize-none dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!"></textarea>
                   
                   @if (getControl('message').invalid && (getControl('message').dirty || getControl('message').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -130,9 +131,8 @@
 
               <div class="flex justify-end pt-2">
                 <button nz-button nzType="primary" [disabled]="contactForm.invalid || isSubmitting()"
-                  class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 to-indigo-600 px-6 text-sm font-medium tracking-wide text-slate-900 shadow-lg shadow-purple-950/20 transition-all duration-300 hover:scale-[1.01] hover:from-purple-600 hover:to-indigo-500 dark:shadow-purple-950/50 disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 dark:disabled:from-slate-800 dark:disabled:to-slate-800 dark:disabled:text-slate-500 border-none">
+                  class="lift-on-hover inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 via-fuchsia-600 to-cyan-600 px-6 text-sm font-medium tracking-wide text-white shadow-lg shadow-purple-950/20 transition-all duration-300 dark:shadow-purple-950/50 disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 dark:disabled:from-slate-800 dark:disabled:to-slate-800 dark:disabled:text-slate-500 border-none">
                   <span>{{ (isSubmitting() ? 'Sending...' : 'Send Message') | translate }}</span>
-                  <!-- <span nz-icon nzType="rocket" nzTheme="outline" aria-hidden="true"></span> -->
                 </button>
               </div>
             </form>

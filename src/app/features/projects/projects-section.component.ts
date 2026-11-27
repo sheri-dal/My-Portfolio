@@ -6,6 +6,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 interface Project {
   readonly id: string;
@@ -27,7 +28,7 @@ interface Project {
 @Component({
   selector: 'app-projects-section',
   standalone: true,
-  imports: [CommonModule, NzCardModule, NzGridModule, NzTagModule, NzIconModule, TranslatePipe],
+  imports: [CommonModule, NzCardModule, NzGridModule, NzTagModule, NzIconModule, TranslatePipe, ScrollRevealDirective],
   templateUrl: './projects-section.component.html',
   styleUrls: ['./projects-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

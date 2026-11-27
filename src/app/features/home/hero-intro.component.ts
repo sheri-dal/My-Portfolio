@@ -12,6 +12,8 @@ import { ContactSectionComponent } from '../contact/contact-section.component';
 import { ProjectsSectionComponent } from '../projects/projects-section.component';
 import { CONTACT } from '../../shared/contact.constants';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { CountUpDirective } from '../../shared/directives/count-up.directive';
 
 interface HeroSocialLink {
   readonly label: string;
@@ -46,7 +48,7 @@ interface HeroProfile {
 
 @Component({
   selector: 'app-hero-intro',
-  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent, TranslatePipe],
+  imports: [NzBadgeModule, NzIconModule, AboutSectionComponent, SkillsSectionComponent, ExperienceSectionComponent, ProjectsSectionComponent, ContactSectionComponent, TranslatePipe, ScrollRevealDirective, CountUpDirective],
   templateUrl: './hero-intro.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -92,7 +94,7 @@ export class HeroIntroComponent implements OnInit {
     lightBackgroundImagePath: 'assets/icons/Hero-sec-img-light.png',
     seoTitle: 'Sheheryar Hussain | Full-Stack .NET, Angular & Flutter Developer in Nuremberg',
     seoDescription:
-      'Sheheryar Hussain, Full-Stack Software Engineer in Nuremberg (Nürnberg), Germany: .NET Core / C#, ASP.NET Core APIs, Angular, Flutter and SQL Server for ERP, POS and logistics systems. Available for jobs and freelance projects.',
+      'Sheheryar Hussain — Full-Stack Software Engineer (Full-Stack-Softwareentwickler) in Nuremberg (Nürnberg), Germany. .NET Core, C#, Angular, Flutter and SQL Server for ERP, POS and logistics systems. Backend, mobile and API development. Available for full-time roles and freelance projects.',
   };
 
   readonly backgroundImage = computed(() =>
@@ -124,6 +126,7 @@ export class HeroIntroComponent implements OnInit {
     this.meta.updateTag({ property: 'og:url', content: 'https://sheri-dal.github.io/My-Portfolio/' });
     this.meta.updateTag({ property: 'og:site_name', content: 'Sheheryar Hussain Portfolio' });
     this.meta.updateTag({ property: 'og:locale', content: 'en_US' });
+    this.meta.updateTag({ property: 'og:locale:alternate', content: 'de_DE' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: this.profile.seoTitle });
     this.meta.updateTag({ name: 'twitter:description', content: this.profile.seoDescription });
@@ -176,6 +179,10 @@ export class HeroIntroComponent implements OnInit {
               'C#', '.NET Core', 'ASP.NET Core', 'REST APIs', 'Entity Framework',
               'SQL Server', 'Angular', 'TypeScript', 'Flutter', 'Dart',
               'Offline-first mobile apps', 'ERP integration', 'Docker', 'Azure', 'CI/CD',
+              'Full-Stack Development', 'Full-Stack-Softwareentwicklung', 'Backend Development',
+              'Backend-Entwicklung', 'Mobile App Development', 'API Design', 'Microservices',
+              'Clean Architecture', 'JWT Authentication', 'PostgreSQL', 'MongoDB', 'SQLite',
+              'Point of Sale Systems', 'Logistics Software', 'Agile Software Development', 'Git',
             ],
             sameAs,
           },

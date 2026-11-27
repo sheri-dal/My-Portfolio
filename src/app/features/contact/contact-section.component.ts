@@ -9,6 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { CONTACT } from '../../shared/contact.constants';
 import { DownloadCvButtonComponent } from '../../shared/ui/download-cv-button/download-cv-button';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 interface ContactInfo {
   icon: string;
@@ -28,7 +29,7 @@ interface SocialProfile {
 @Component({
   selector: 'app-contact-section',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NzFormModule, NzInputModule, NzButtonModule, NzIconModule, DownloadCvButtonComponent, TranslatePipe],
+  imports: [CommonModule, ReactiveFormsModule, NzFormModule, NzInputModule, NzButtonModule, NzIconModule, DownloadCvButtonComponent, TranslatePipe, ScrollRevealDirective],
   templateUrl: './contact-section.component.html',
   styleUrls: ['./contact-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

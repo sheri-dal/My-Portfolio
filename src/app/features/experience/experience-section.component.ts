@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 
 interface WorkHistoryItem {
   readonly dateRange: string;
@@ -11,7 +12,7 @@ interface WorkHistoryItem {
 
 @Component({
   selector: 'app-experience-section',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, ScrollRevealDirective],
   templateUrl: './experience-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

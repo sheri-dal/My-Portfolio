@@ -71,7 +71,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('fullName')">
                   <input nz-input formControlName="fullName" [placeholder]="'Your name' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('fullName').invalid && (getControl('fullName').dirty || getControl('fullName').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -87,7 +87,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('email')">
                   <input nz-input formControlName="email" placeholder="your@email.com" 
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('email').invalid && (getControl('email').dirty || getControl('email').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -103,7 +103,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('subject')">
                   <input nz-input formControlName="subject" [placeholder]="'How can I help?' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white" />
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl h-12 px-4 transition-all dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!" />
                   
                   @if (getControl('subject').invalid && (getControl('subject').dirty || getControl('subject').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">
@@ -119,7 +119,7 @@
                 </nz-form-label>
                 <nz-form-control [nzHasFeedback]="true" [nzValidateStatus]="nzValidateStatus('message')">
                   <textarea nz-input rows="5" formControlName="message" [placeholder]="'Tell me about your project or opportunity...' | translate"
-                    class="bg-slate-50/50 border-slate-200 focus:border-purple-500 text-slate-900 rounded-xl p-4 transition-all resize-none dark:bg-[#111726]/50 dark:border-slate-800 dark:focus:border-purple-500 dark:text-white"></textarea>
+                    class="bg-slate-50/50! border-slate-200 focus:border-purple-500 text-slate-900! rounded-xl p-4 transition-all resize-none dark:bg-[#111726]/50! dark:border-slate-800 dark:focus:border-purple-500 dark:text-white!"></textarea>
                   
                   @if (getControl('message').invalid && (getControl('message').dirty || getControl('message').touched)) {
                     <div class="text-xs text-red-500 dark:text-red-400 mt-1.5 pl-1">

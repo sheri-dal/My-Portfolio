@@ -73,15 +73,15 @@ export class ContactSectionComponent implements OnInit {
     const ld = {
       '@context': 'https://schema.org',
       '@type': 'Person',
+      '@id': 'https://sheri-dal.github.io/My-Portfolio/#person',
       name: 'Sheheryar Hussain',
-      url: this.doc.location?.origin || '',
+      url: 'https://sheri-dal.github.io/My-Portfolio/',
       telephone: this.phone,
       email: this.email,
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Nuremberg',
         addressRegion: 'Bavaria',
-        postalCode: '',
         addressCountry: 'DE'
       }
     };

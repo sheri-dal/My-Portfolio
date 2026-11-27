@@ -159,7 +159,7 @@ export class ProjectsSectionComponent implements OnInit {
         name: p.title,
         description: p.longDescription || p.summary,
         applicationCategory: 'BusinessApplication',
-        url: p.demoUrl || p.repoUrl || this.doc.location?.origin || '',
+        url: p.demoUrl || p.repoUrl || 'https://sheri-dal.github.io/My-Portfolio/',
       }));
 
       const container = {

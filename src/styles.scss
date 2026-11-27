@@ -96,6 +96,12 @@ a {
 	color: inherit;
 }
 
+/* ng-zorro-antd's base styles hard-code h1–h6 to rgba(0,0,0,0.85); reclaim
+	 theme-aware inheritance so headings follow --color-text-primary in both modes. */
+h1, h2, h3, h4, h5, h6 {
+	color: inherit;
+}
+
 button,
 a {
 	-webkit-tap-highlight-color: transparent;

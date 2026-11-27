@@ -50,7 +50,7 @@ export class AboutSectionComponent {
 readonly careerMilestones: readonly CareerMilestone[] = [
   {
     year: '04/2025 – Present',
-    companyTitle: 'Freelance Full-Stack Software Engineer',
+    companyTitle: 'Freelance Full-Stack Software Engineer @ Logistic Hub',
     roleDescription: 'Lead full-stack projects; architecture, APIs, and performance optimization.'
   },
   {

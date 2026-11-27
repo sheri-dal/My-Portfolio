@@ -60,8 +60,8 @@ export class ContactSectionComponent implements OnInit {
   ngOnInit(): void {
     this.contactDetails = [
       { icon: 'mail', theme: 'fill', label: 'Email', value: this.email, href: `mailto:${this.email}` },
-      { icon: 'user', theme: 'outline', label: 'Phone', value: this.phone },
-      { icon: 'team', theme: 'outline', label: 'Location', value: this.locationTitle }
+      { icon: 'phone', theme: 'outline', label: 'Phone', value: this.phone },
+      { icon: 'environment', theme: 'outline', label: 'Location', value: this.locationTitle }
     ];
 
     this.socialProfiles = [

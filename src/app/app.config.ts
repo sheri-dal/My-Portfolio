@@ -8,7 +8,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
-import { ApiOutline, AppstoreOutline, BuildOutline, CheckOutline, CloudOutline, CodeOutline, CloseOutline, DatabaseOutline, DownloadOutline, ExperimentOutline, GithubFill, LinkedinFill, MailFill, MenuOutline, MoonOutline, RocketOutline, SafetyCertificateOutline, SunOutline, TeamOutline, ToolOutline, UserOutline } from '@ant-design/icons-angular/icons';
+import { ApiOutline, AppstoreOutline, BuildOutline, CheckOutline, CloudOutline, CodeOutline, CloseOutline, DatabaseOutline, DownloadOutline, EnvironmentOutline, ExperimentOutline, GithubFill, LinkedinFill, MailFill, MenuOutline, MoonOutline, PhoneOutline, RocketOutline, SafetyCertificateOutline, SunOutline, TeamOutline, ToolOutline, UserOutline } from '@ant-design/icons-angular/icons';
 
 registerLocaleData(en);
 
@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     provideNzI18n(en_US),
-    provideNzIcons([ApiOutline, AppstoreOutline, BuildOutline, CheckOutline, CloudOutline, CodeOutline, CloseOutline, DatabaseOutline, DownloadOutline, ExperimentOutline, GithubFill, LinkedinFill, MailFill, MenuOutline, MoonOutline, RocketOutline, SafetyCertificateOutline, SunOutline, TeamOutline, ToolOutline, UserOutline]),
+    provideNzIcons([ApiOutline, AppstoreOutline, BuildOutline, CheckOutline, CloudOutline, CodeOutline, CloseOutline, DatabaseOutline, DownloadOutline, EnvironmentOutline, ExperimentOutline, GithubFill, LinkedinFill, MailFill, MenuOutline, MoonOutline, PhoneOutline, RocketOutline, SafetyCertificateOutline, SunOutline, TeamOutline, ToolOutline, UserOutline]),
   ],
 };

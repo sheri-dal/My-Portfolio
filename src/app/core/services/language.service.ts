@@ -227,8 +227,8 @@ export class LanguageService {
         ?.setAttribute(
           'content',
           language === 'de'
-            ? 'Full-Stack Softwareentwickler in Nürnberg mit Fokus auf .NET Core, Angular, Flutter, SQL Server, skalierbare APIs und Enterprise-Integrationen.'
-            : 'Full-Stack Software Engineer in Nuremberg specializing in .NET Core, Angular, Flutter, SQL Server, scalable APIs, and enterprise integrations.',
+            ? 'Full-Stack-Softwareentwickler (Anwendungsentwickler) in Nürnberg, Bayern: .NET Core, C#, Angular, Flutter und SQL Server für ERP-, POS- und Logistiksysteme. Backend-, Mobile- und API-Entwicklung. Verfügbar für Festanstellung und Freelance-Projekte.'
+            : 'Full-Stack Software Engineer (Full-Stack-Softwareentwickler) in Nuremberg (Nürnberg), Germany: .NET Core, C#, Angular, Flutter and SQL Server for ERP, POS and logistics systems. Backend, mobile and API development. Available for full-time roles and freelance projects.',
         );
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('portfolio-language', language);
